@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import ReactDOM  from 'react-dom';
 import styles from './index.module.less';
-import CommonDownApp from '../../commonDownApp';
 
 export default function ListItem ({contentImg, content, nickName, headImg}) {
     return (
@@ -9,7 +8,7 @@ export default function ListItem ({contentImg, content, nickName, headImg}) {
             <img
                 className={styles.img}
                 width="100%"
-                src={`${contentImg}?x-oss-process=image/resize,m_pad,w_300,h_420,color_1a1a1a`}
+                src={`${contentImg}?x-oss-process=image/resize,m_fill,w_300,h_400,color_1a1a1a`}
             />
             <div className={styles.masker}></div>
             <div className={styles.textWrap}>

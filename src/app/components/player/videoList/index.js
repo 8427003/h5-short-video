@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import * as action from 'app/actions';
 import MyVideo from '../video';
 import ReactSwipe from 'react-swipe';
+import { isAndroid } from 'app/helper';
 
 export class VideoList extends Component {
     state = {
@@ -30,15 +31,20 @@ export class VideoList extends Component {
         const curPos = this.swiper.getPos();
 
         // weixin ios is ok
-        if(!this.playFixed) {
+        if(!isAndroid() && !this.playFixed) {
             Object.keys(this.videoDoms).forEach((item) => {
-                //this.videoDoms[item].play();
-                //this.videoDoms[item].pause();
+                this.videoDoms[item].play();
+                setTimeout(()=> {
+                    this.videoDoms[item].pause();
+                }, 100);
             });
             this.playFixed = true;
         }
 
-        this.videoDoms[curPos].play();
+        this.videoDoms[curPos].style.width = '100%';
+        setTimeout(()=> {
+            this.videoDoms[curPos].play();
+        }, 100);
         this.setState({
             playing: true,
         })
@@ -89,7 +95,7 @@ export class VideoList extends Component {
         if(this.hasNext()) {
             console.log('current play end, will play next one!')
             this.setState({
-                playing: false,
+                playing: isAndroid() ? false : true,
             })
             this.handleNext();
             return;
@@ -97,6 +103,7 @@ export class VideoList extends Component {
 
         if(!this.hasNext()) {
             console.log('the last play end, will show recommend!')
+            this.videoDoms[curPos].style.width = 0;
             this.setState({
                 playing: false,
             })
@@ -161,7 +168,8 @@ export class VideoList extends Component {
                             </div>
                         ))}
                     </ReactSwipe>
-                    <div className={styles.mask}></div>
+                    <div className={styles.maskBottom}></div>
+                    <div className={styles.maskLeft}></div>
                 </div>
 
                 {!this.state.playing &&

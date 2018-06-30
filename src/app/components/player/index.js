@@ -11,7 +11,7 @@ import { connect } from 'react-redux';
 import * as action from 'app/actions';
 import _get from 'lodash/get';
 
-export class Play extends Component {
+export class Player extends Component {
 
     render(){
         const props = this.props;
@@ -59,4 +59,4 @@ function mapDispatchToProps(dispatch) {
     }, dispatch);
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Play);
+export default connect(mapStateToProps, mapDispatchToProps)(Player);

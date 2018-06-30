@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import styles from './index.module.less';
-import CommonDownApp from '../../commonDownApp';
 
 export default class footerBar extends Component {
     render(){

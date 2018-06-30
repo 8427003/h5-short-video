@@ -2,7 +2,7 @@ import 'normalize.css';
 import './index.less';
 import React, { Component } from 'react';
 import Recommend from './components/recommend';
-import Play from './components/play';
+import Player from './components/player';
 import { hot } from 'react-hot-loader';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
@@ -20,7 +20,7 @@ export class App extends Component {
     render() {
         return (
             <div>
-                <Play />
+                <Player />
                 {this.props.recomendShow && <Recommend />}
             </div>
         )
