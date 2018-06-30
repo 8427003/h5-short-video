@@ -12,7 +12,7 @@ import config from './config/env';
 
 
 // 如果设置有环境变量，则根据环境变量NODE_PROFILE改变baseURL
-const NODE_PROFILE = process && process.env && process.env.NODE_PROFILE || 'test';
+const NODE_PROFILE = process && process.env && process.env.NODE_PROFILE;
 if(config[NODE_PROFILE] && config[NODE_PROFILE].baseURL) {
     axios.defaults.baseURL = config[NODE_PROFILE].baseURL;
     axios.defaults.withCredentials = true;

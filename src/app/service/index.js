@@ -1,5 +1,4 @@
 import axios from 'axios';
-import qs from 'qs';
 
 // 接口文档
 // https://shimo.im/docs/JhbHOaYUp9UuaX9J
@@ -21,6 +20,10 @@ export const getContentByHashtag = ({ hashtagId }) => {
     });
 }
 
-export const getAppScheme = type => {
-    return axios.get('/api/version/v1/getversion', qs.stringify({type}));
+export const getAppScheme = ({ type }) => {
+    return axios.get('/api/version/v1/getversion', {
+        params: {
+            type,
+        }
+    });
 }

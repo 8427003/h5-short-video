@@ -2,6 +2,7 @@ import { all, call, put, select, takeEvery } from 'redux-saga/effects';
 import { getContentByCid, getContentByHashtag, getAppScheme } from '../service';
 import { PLATFORM_TYPE } from '../constants';
 import _get from 'lodash/get';
+import { isAndroid } from '../helper';
 import {
     INIT_FETCH_DATA,
     INIT_FETCH_DATA_SUCCESS,
@@ -30,7 +31,7 @@ export function* initPage(action) {
 
 
     let resByHashtag = yield call(getContentByHashtag, { hashtagId: content.hashtagId } );
-    let resAppscheme = yield call(getAppScheme, { type: PLATFORM_TYPE.ANDROID } );
+    let resAppscheme = yield call(getAppScheme, { type: isAndroid() ? PLATFORM_TYPE.ANDROID : PLATFORM_TYPE.IOS } );
 
     state = {
         recommendList: _get(resByHashtag, 'data.resultContent'),

@@ -161,6 +161,7 @@ export class VideoList extends Component {
                             </div>
                         ))}
                     </ReactSwipe>
+                    <div className={styles.mask}></div>
                 </div>
 
                 {!this.state.playing &&
