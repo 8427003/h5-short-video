@@ -1,0 +1,76 @@
+{
+    "resultCode": 30901,
+    "resultContent": {
+        "shareUser": {
+            "userName": "分享人名称",
+            "headImgUrl": "https://thirdwx.qlogo.cn/mmopen/vi_32/DYAIOgq83eqxeiaib7fP5GpKlploU598Grkw1micpG3iczAa96pSJWy2A4DI0zic29ndoQMv2iaFGhmzm8PGZ0vkhupg/132"
+        },
+        "content": {
+            "userInfo": {
+                "uid": "201806131609091624",
+                "headImg": "https://thirdwx.qlogo.cn/mmopen/vi_32/DYAIOgq83eqxeiaib7fP5GpKlploU598Grkw1micpG3iczAa96pSJWy2A4DI0zic29ndoQMv2iaFGhmzm8PGZ0vkhupg/132",
+                "nickname": "璀璀"
+            },
+            "shareInfo": {
+                "imgUrl": "https://xvideo100.oss-cn-beijing.aliyuncs.com/app-material/head.png",
+                "link": "http://h5.shengxinjing.cn/?contentId=1",
+                "title": "前面欧美眼妆教程  仙女们请看☺️",
+                "desc": "天天种草推荐"
+            },
+            "isGoods": 1,
+            "headImg": "https://thirdwx.qlogo.cn/mmopen/vi_32/DYAIOgq83eqxeiaib7fP5GpKlploU598Grkw1micpG3iczAa96pSJWy2A4DI0zic29ndoQMv2iaFGhmzm8PGZ0vkhupg/132",
+            "praiseCount": 98,
+            "goodsList": [
+                {
+                    "goodsImg": "https://gw.alicdn.com/imgextra/i4/678124088/TB2f0pnnbYI8KJjy0FaXXbAiVXa_!!678124088.jpg_970x970q50s150.jpg",
+                    "gid": "1",
+                    "goodsTitle": "美国UrbanDecayUD衰败城市限量裸妆眼影盘12色烟熏大地色Naked",
+                    "isDiscount": 0,
+                    "taobaoUrl": "https://item.taobao.com/item.htm?id=555172680160&ali_refid=a3_430582_1006:1105448568:N:urban+decay%E7%9C%BC%E5%BD%B1%E7%9B%98:682bc6cced8881ef64747f973974dc54&ali_trackid=1_682bc6cced8881ef64747f973974dc54&spm=a230r.1.14.1#detail",
+                    "saleNumber": 0,
+                    "price1": 309,
+                    "price2": 309,
+                    "isCoupon": 1,
+                    "couponAmount": 999
+                },
+                {
+                    "goodsImg": "https://gw.alicdn.com/imgextra/i4/678124088/TB2f0pnnbYI8KJjy0FaXXbAiVXa_!!678124088.jpg_970x970q50s150.jpg",
+                    "gid": "1",
+                    "goodsTitle": "美国UrbanDecayUD衰败城市限量裸妆眼影盘12色烟熏大地色Naked",
+                    "isDiscount": 0,
+                    "taobaoUrl": "https://item.taobao.com/item.htm?id=555172680160&ali_refid=a3_430582_1006:1105448568:N:urban+decay%E7%9C%BC%E5%BD%B1%E7%9B%98:682bc6cced8881ef64747f973974dc54&ali_trackid=1_682bc6cced8881ef64747f973974dc54&spm=a230r.1.14.1#detail",
+                    "saleNumber": 0,
+                    "price1": 309,
+                    "price2": 309,
+                    "isCoupon": 0
+                }
+            ],
+            "hashtagName": "天天种草",
+            "content": "前面欧美眼妆教程  仙女们请看☺️",
+            "commentCount": 99,
+            "uid": "201806131609091624",
+            "hashtagId": 1,
+            "videoList": [
+                {
+                    "vid": "1",
+                    "videoPath": "c19f180e92ed49c4b1f43d6d184657ce",
+                    "videoUrl": "http://x.tangyishipin.com/sv/364a6556-1637c0f3650/364a6556-1637c0f3650.mp4",
+                    "videoImg": "http://x.tangyishipin.com/c19f180e92ed49c4b1f43d6d184657ce/covers/be9dd39398e94bf8b31447c71cba93b1-00002.jpg",
+                    "videoTitle": "前面欧美眼妆教程  仙女们请看☺️"
+                },
+                {
+                    "vid": "1",
+                    "videoPath": "c19f180e92ed49c4b1f43d6d184657ce",
+                    "videoUrl": "http://static.jiyou-tech.com/2018/281/video4.mp4",
+                    "videoImg": "http://x.tangyishipin.com/c19f180e92ed49c4b1f43d6d184657ce/covers/be9dd39398e94bf8b31447c71cba93b1-00002.jpg",
+                    "videoTitle": "前面欧美眼妆教程  仙女们请看☺️"
+                }
+            ],
+            "nickname": "璀璀",
+            "forwardCount": 0,
+            "contentType": 1,
+            "cid": "1"
+        }
+    },
+    "resultMsg": "成功"
+}

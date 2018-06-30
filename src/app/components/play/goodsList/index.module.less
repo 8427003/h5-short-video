@@ -1,0 +1,120 @@
+.goodsList {
+    padding-top: 14.5px;
+    overflow: hidden;
+    height: 73.5px;
+}
+
+.listView {
+    overflow: hidden;
+    overflow-x: scroll;
+    padding:0 8.5px;
+    -webkit-overflow-scrolling: touch;
+
+    .listWrap {
+        width: 305%;
+        padding-bottom: 50px;
+        display: -webkit-box;
+    }
+    .itemWrap {
+        -webkit-box-flex: 1;
+        margin: 0 6px;
+    }
+}
+
+.itemSection {
+    display: -webkit-box;
+    border-radius: 4px;
+    background-color: rgba(197, 198, 199, .361);
+    padding: 3px;
+
+    .preInfo {
+        width: 50.5px;
+        height: 50.5px;
+
+        .goodsImg {
+            width: 100%;
+            height: 100%;
+            background: grey;
+        }
+    }
+
+    .middleInfo {
+        -webkit-box-flex: 1;
+        padding-top: 5px;
+        margin-left: 10px;
+        margin-right: 10px;
+        .goodsPrice {
+            padding-top: 5px;
+            text-align: left;
+        }
+        .goodsTitle {
+            text-align: left;
+            font-size: 14.5px;
+            font-family: "PingFang SC";
+            color: #fff;
+            text-transform: uppercase;
+            line-height: 1.097;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+
+        }
+        .newPrice {
+            font-size: 16px;
+            font-family: "Avenir Next Condensed";
+            color: rgb(255, 255, 255);
+            font-weight: bold;
+            line-height: 0.751;
+            .rmb {
+                font-size: 12px;
+                font-style: normal;
+            }
+        }
+        .oldPrice {
+            margin-left: 4px;
+            font-size: 12.5px;
+            font-family: "Avenir Next Condensed";
+            color: rgba(255, 255, 255, 0.6);
+            font-weight: bold;
+            text-decoration: line-through;
+            text-transform: uppercase;
+            line-height: 0.96;
+        }
+    }
+
+    .afterInfo {
+        min-width: 50px;
+        height: 50px;
+        border-radius: 4px;
+        background-color: rgba(0, 0, 0, .2);
+
+        .discountPrice {
+            padding-top: 9px;
+            display: block;
+            text-align: center;
+            font-size: 20px;
+            color: rgb(255, 255, 255);
+            font-weight: bold;
+            line-height: 0.844;
+            text-align: center;
+        }
+        .discountUnit {
+            display: block;
+            padding-top: 6px;
+            text-align: center;
+            font-size: 11px;
+            color: rgb(255, 255, 255);
+            text-align: center;
+        }
+
+        .viewDetail {
+            display: block;
+            padding-top: 5px;
+            text-align: center;
+            line-height: 20px;
+            font-size: 16px;
+            color: rgb(255, 255, 255);
+            text-align: center;
+        }
+    }
+}

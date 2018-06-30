@@ -1,0 +1,9 @@
+{
+	"resultCode":60401,
+	"resultMsg": "获取成功",
+    "resultContent": {
+        "version": "版本号",
+        "versionDesc": "版本描述",
+        "downloadUrl": "http://baidu.com"
+    }
+}

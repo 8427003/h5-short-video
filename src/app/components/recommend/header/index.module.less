@@ -1,0 +1,32 @@
+.title {
+    display: -webkit-box;
+}
+.logo {
+    width: 57.5px;
+    height: 57.5px;
+    background: url('../header/logo.png') no-repeat;
+    // css module 图片路径解析有问题, fallback 解决 ../上级目录/xx.png,
+    //https://github.com/webpack-contrib/css-loader/issues/282
+    background-size: cover;
+    -webkit-background-size: cover;
+}
+.textWrap {
+    -webkit-box-flex: 1;
+    line-height: 0;
+    margin: 6px 0 0 15.5px;
+
+    .nameWrap {
+        color: #fff;
+        line-height: 1;
+        font-size: 22px;
+    }
+    .name {
+        color: #fa8c8c;
+    }
+    .desc {
+        margin-top: 3px;
+        color: #fff;
+        line-height: 1;
+        font-size: 22px;
+    }
+}

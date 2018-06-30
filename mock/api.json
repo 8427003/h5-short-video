@@ -1,0 +1,5 @@
+{
+    "/api/contentlist/v1/getbycid": "./data/contentlist/getbycid.json",
+    "/api/contentlist/v1/getbyhashtag": "./data/contentlist/getbyhashtag.json",
+    "/api/version/v1/getversion": "./data/version/getversion.json"
+}

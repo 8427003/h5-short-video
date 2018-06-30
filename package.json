@@ -1,0 +1,34 @@
+{
+  "name": "h5-short-video",
+  "version": "1.0.0",
+  "description": "",
+  "main": "webpack.config.js",
+  "scripts": {
+    "start": "webpack-dev-server --config ./build/webpack.config.js --progress --color --inline --env.dev",
+    "build": "webpack --config ./build/webpack.config.js --progress --env.prod",
+    "debug": "webpack --config ./build/webpack.config.js --display-modules --sort-modules-by size --json > compilation-stats.json"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "rid-webpack-build": "https://github.com/8427003/rid-webpack-build.git#webpack4",
+    "webpack-merge": "^4.1.1"
+  },
+  "dependencies": {
+    "@babel/polyfill": "^7.0.0-beta.46",
+    "axios": "^0.17.1",
+    "axios-jsonp-pro": "^1.1.4",
+    "classnames": "^2.2.5",
+    "normalize.css": "^8.0.0",
+    "prop-types": "^15.6.1",
+    "qs": "^6.5.1",
+    "react": "^16.4.1",
+    "react-dom": "^16.1.1",
+    "react-hot-loader": "^4.1.2",
+    "react-redux": "^5.0.7",
+    "react-swipe": "^5.1.1",
+    "redux": "^3.7.2",
+    "redux-saga": "^0.16.0",
+    "swipe-js-iso": "^2.0.4"
+  }
+}
