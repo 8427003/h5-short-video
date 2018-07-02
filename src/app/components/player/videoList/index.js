@@ -7,12 +7,17 @@ import * as action from 'app/actions';
 import MyVideo from '../video';
 import ReactSwipe from 'react-swipe';
 import { isAndroid } from 'app/helper';
+import { CONTENT_TYPE, IMAGE_SWIPE_TIME } from 'app/constants';
 
 export class VideoList extends Component {
     state = {
         playing: false,
     }
     togglePlay = () => {
+        if(this.props.contentType === CONTENT_TYPE.IMAGE) {
+            return;
+        }
+
         const curPos = this.swiper.getPos();
         if (this.state.playing) {
             this.videoDoms[curPos].pause();
@@ -28,6 +33,10 @@ export class VideoList extends Component {
         }
     }
     handlePlay = () => {
+        if(this.props.contentType === CONTENT_TYPE.IMAGE) {
+            return;
+        }
+
         const curPos = this.swiper.getPos();
 
         // weixin ios is ok
@@ -52,19 +61,29 @@ export class VideoList extends Component {
     handleNext = () => {
         if(!this.hasNext()) return;
 
+        if(this.props.contentType === CONTENT_TYPE.IMAGE) {
+            this.swiper.next();
+            this.forceUpdate();
+            return;
+        }
+
         const curPos = this.swiper.getPos();
-        console.log('do pause current')
         this.videoDoms[curPos].pause();
         this.swiper.next();
         this.forceUpdate(() => {
             if (this.state.playing) {
-                console.log('do play next')
                 this.videoDoms[curPos + 1].play();
             }
         });
     }
     handlePrev = () => {
         if(!this.hasPrev()) return;
+
+        if(this.props.contentType === CONTENT_TYPE.IMAGE) {
+            this.swiper.prev();
+            this.forceUpdate();
+            return;
+        }
 
         const curPos = this.swiper.getPos();
         console.log('do pause current')
@@ -110,6 +129,25 @@ export class VideoList extends Component {
             this.props.showRecomend();
         }
     }
+    handleSwipeChange = (index, elem) => {
+        if(this.props.contentType === CONTENT_TYPE.VIDEO) {
+            return;
+        }
+        this.forceUpdate();
+        clearTimeout(this.swpipeTimer);
+        if(index === this.props.videoList.length - 1) {
+            this.swpipeTimer = setTimeout(() => {
+                this.props.showRecomend();
+            }, IMAGE_SWIPE_TIME);
+        }
+
+        // auto 存在issues，手动设置自动播放
+        else if(index < this.props.videoList.length - 1){
+            this.swpipeTimer = setTimeout(() => {
+                this.swiper.next();
+            }, IMAGE_SWIPE_TIME);
+        }
+    }
     initDoms = () => {
         this.videoDoms = document.getElementsByTagName('video');
     }
@@ -127,6 +165,7 @@ export class VideoList extends Component {
     }
     render(){
         const props = this.props;
+
         const style = {
             container: {
                 height: '100%',
@@ -142,11 +181,22 @@ export class VideoList extends Component {
             }
 
         }
-        const swipeOptions = {
+        let swipeOptions = {
             disableScroll: true,
             continuous: false,
         }
-        const videoList = props.videoList || [];
+
+        // 如果是图片，swipe 自动3秒切换
+        if(props.contentType === CONTENT_TYPE.IMAGE) {
+
+            // 手动prev 或 next 后auto 失效issues
+            // 初始化时，callback不触发，利用auto 切换到第二页,
+            // + 100 是让auto 执行一次后，晚于手动next() 执行
+            swipeOptions.auto = IMAGE_SWIPE_TIME + 100;
+            swipeOptions.callback = this.handleSwipeChange;
+        }
+
+        let videoList = props.videoList || [];
 
         return (
             <React.Fragment>
@@ -163,6 +213,7 @@ export class VideoList extends Component {
                                     index={index}
                                     poster={item.videoImg}
                                     src={item.videoUrl}
+                                    contentType={props.contentType}
                                     onEnded={this.handleEnded}
                                 />
                             </div>
@@ -172,7 +223,7 @@ export class VideoList extends Component {
                     <div className={styles.maskLeft}></div>
                 </div>
 
-                {!this.state.playing &&
+                {(!this.state.playing && props.contentType === CONTENT_TYPE.VIDEO) &&
                     <div className={styles.playBtn} onClick={this.handlePlay}></div>
                 }
 

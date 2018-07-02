@@ -10,6 +10,7 @@ export const getUrlParams = () => {
 export const isAndroid = () => {
     var ua = navigator.userAgent.toLowerCase();
     var isAndroid = ua.indexOf("android") > -1;
+
     return isAndroid;
 }
 

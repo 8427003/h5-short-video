@@ -10,6 +10,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as action from 'app/actions';
 import _get from 'lodash/get';
+import { CONTENT_TYPE } from 'app/constants';
 
 export class Player extends Component {
 
@@ -35,7 +36,6 @@ export class Player extends Component {
                         userName={_get(props, 'shareUser.userName')}
                         headImgUrl={_get(props, 'shareUser.headImgUrl')}
                     />
-
                 </div>
 
                 <ActionSide
@@ -43,6 +43,7 @@ export class Player extends Component {
                     likeCount={props.praiseCount}
                     commentCount={props.commentCount}
                     openApp={props.openApp}
+                    isMiddle={_get(props, 'videoList.length') === 1}
                 />
             </div>
         )

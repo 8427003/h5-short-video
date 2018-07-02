@@ -8,6 +8,18 @@ import {
     INIT_FETCH_DATA_SUCCESS,
     FETCH_EXTRA_DATA_SUCCESS,
 } from '../actions'
+import { CONTENT_TYPE } from 'app/constants';
+
+const getVideoList = (list = [], contentType) => {
+
+    // android 平台会弹起播放器，swipe切换效果布局紊乱
+    // 去掉多视频播放
+    if(list.length > 1 && isAndroid() && contentType === CONTENT_TYPE.VIDEO) {
+        return list.slice(0, 1);
+    }
+
+    return list;
+}
 
 export function* initPage(action) {
     const { cid, uid } = action;
@@ -24,7 +36,7 @@ export function* initPage(action) {
         userInfo: content.userInfo, // 用户信息
         contentType: content.contentType, // 1-视频 2-图文
         goodsList: content.goodsList || [], // 商品列表
-        videoList: content.videoList || [], // 视频列表
+        videoList: getVideoList(content.videoList, content.contentType), // 视频列表
     }
     yield put({ type: INIT_FETCH_DATA_SUCCESS, payload: state });
 

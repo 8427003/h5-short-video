@@ -3,6 +3,10 @@ import ReactDOM from 'react-dom';
 import styles from './index.module.less';
 
 function num10K(count) {
+    if(count === undefined) {
+        return '';
+    }
+
     if (count < 10000) {
         return count;
     }
@@ -10,10 +14,10 @@ function num10K(count) {
     return `${(Math.floor(count/10000 * 10) / 10).toFixed(1)}万`;
 }
 
-export default function ActionSide ({ likeCount, commentCount, headImg, openApp }) {
+export default function ActionSide ({ likeCount, commentCount, headImg, openApp, isMiddle }) {
 
     return (
-        <div className={styles.actionSide}>
+        <div className={isMiddle ? styles.actionSideMiddle : styles.actionSide}>
             <div className={styles.avatarWrap}>
                 {headImg &&
                     <img
@@ -40,5 +44,3 @@ export default function ActionSide ({ likeCount, commentCount, headImg, openApp 
         </div>
     )
 }
-
-

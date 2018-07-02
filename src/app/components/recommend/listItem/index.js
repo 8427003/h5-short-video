@@ -8,7 +8,7 @@ export default function ListItem ({contentImg, content, nickName, headImg}) {
             <img
                 className={styles.img}
                 width="100%"
-                src={`${contentImg}?x-oss-process=image/resize,m_fill,w_300,h_400,color_1a1a1a`}
+                src={`${contentImg}?x-oss-process=image/resize,m_fill,h_210,color_1a1a1a,limit=0`}
             />
             <div className={styles.masker}></div>
             <div className={styles.textWrap}>

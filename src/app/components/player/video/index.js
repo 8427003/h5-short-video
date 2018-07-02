@@ -4,6 +4,7 @@ import styles from './index.module.less';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as action from 'app/actions';
+import { CONTENT_TYPE } from 'app/constants';
 
 export class Video extends Component {
     handlePlayEnd = () => {
@@ -12,24 +13,30 @@ export class Video extends Component {
     handlePlaying = () => {
         this.props.onPlaying && this.props.onPlaying(this.props.onPlaying)
     }
-    componentDidMount(){
-    }
     render(){
         return (
             <div className={styles.wrap}>
-                <video
-                    ref={dom => {this.dom = dom}}
-                    webkit-playsinline="true"
-                    playsInline="true"
-                    x5-video-player-type="h5"
-                    x5-video-player-fullscreen="true"
-                    x5-video-orientation="portrait"
-                    className={styles.video}
-                    poster={this.props.poster}
-                    onEnded={this.handlePlayEnd}
-                >
-                    <source src={this.props.src} type="video/mp4" />
-                </video>
+                {this.props.contentType === CONTENT_TYPE.VIDEO &&
+                    <video
+                        ref={dom => {this.dom = dom}}
+                        webkit-playsinline="true"
+                        playsInline="true"
+                        x5-video-player-type="h5"
+                        x5-video-player-fullscreen="true"
+                        x5-video-orientation="portrait"
+                        className={styles.video}
+                        poster={this.props.poster}
+                        onEnded={this.handlePlayEnd}
+                    >
+                        <source src={this.props.src} type="video/mp4" />
+                    </video>
+                }
+                {this.props.contentType === CONTENT_TYPE.IMAGE &&
+                    <div
+                        className={styles.image}
+                        style={{background: `url(${this.props.poster}) no-repeat center`}}>
+                    </div>
+                }
             </div>
         )
     }
