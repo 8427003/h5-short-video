@@ -58,7 +58,8 @@ export class VideoList extends Component {
             //this.playFixed = true;
         //}
 
-        this.videoDoms[curPos].style.width = '100%';
+        //this.videoDoms[curPos].style.width = '100%';
+        this.videoDoms[curPos].style.display = 'block';
         this.videoDoms[curPos].play();
         this.initPlay = true;
     }
@@ -126,7 +127,8 @@ export class VideoList extends Component {
 
         if(!this.hasNext()) {
             console.log('the last play end, will show recommend!')
-            this.videoDoms[curPos].style.width = 0;
+            //this.videoDoms[curPos].style.width = 0;
+            this.videoDoms[curPos].style.display = 'none';
             this.setState({
                 playing: false,
             })
