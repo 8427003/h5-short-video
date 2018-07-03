@@ -11,9 +11,14 @@ export class Video extends Component {
         this.props.onEnded && this.props.onEnded(this.props.index);
     }
     handlePlaying = () => {
-        this.props.onPlaying && this.props.onPlaying(this.props.onPlaying)
+        this.props.onPlaying && this.props.onPlaying(this.props.index)
+    }
+    handleError = () => {
+        console.log('error');
     }
     render(){
+
+
         return (
             <div className={styles.wrap}>
                 {this.props.contentType === CONTENT_TYPE.VIDEO &&
@@ -27,6 +32,8 @@ export class Video extends Component {
                         className={styles.video}
                         poster={this.props.poster}
                         onEnded={this.handlePlayEnd}
+                        onPlaying={this.handlePlaying}
+                        onError={this.handleError}
                     >
                         <source src={this.props.src} type="video/mp4" />
                     </video>

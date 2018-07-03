@@ -13,6 +13,13 @@ export class VideoList extends Component {
     state = {
         playing: false,
     }
+    handlePlaying = (curPos) => {
+        if(!this.state.playing) {
+            this.setState({
+                playing: true
+            })
+        }
+    }
     togglePlay = () => {
         if(this.props.contentType === CONTENT_TYPE.IMAGE) {
             return;
@@ -27,9 +34,9 @@ export class VideoList extends Component {
         }
         else {
             this.videoDoms[curPos].play();
-            this.setState({
-                playing: true
-            })
+            //this.setState({
+                //playing: true
+            //})
         }
     }
     handlePlay = () => {
@@ -39,24 +46,21 @@ export class VideoList extends Component {
 
         const curPos = this.swiper.getPos();
 
-        // weixin ios is ok
-        if(!isAndroid() && !this.playFixed) {
-            Object.keys(this.videoDoms).forEach((item) => {
-                this.videoDoms[item].play();
-                setTimeout(()=> {
-                    this.videoDoms[item].pause();
-                }, 100);
-            });
-            this.playFixed = true;
-        }
+        //为了使第二个视频在第一个视频播放完后自动播发 ios is ok
+        //if(!isAndroid() && !this.playFixed) {
+            //Object.keys(this.videoDoms).forEach((item, index) => {
+
+                //this.videoDoms[item].play();
+                //setTimeout(()=>{
+                    //this.videoDoms[item].pause();
+                //}, 100)
+            //});
+            //this.playFixed = true;
+        //}
 
         this.videoDoms[curPos].style.width = '100%';
-        setTimeout(()=> {
-            this.videoDoms[curPos].play();
-        }, 100);
-        this.setState({
-            playing: true,
-        })
+        this.videoDoms[curPos].play();
+        this.initPlay = true;
     }
     handleNext = () => {
         if(!this.hasNext()) return;
@@ -71,7 +75,7 @@ export class VideoList extends Component {
         this.videoDoms[curPos].pause();
         this.swiper.next();
         this.forceUpdate(() => {
-            if (this.state.playing) {
+            if (this.initPlay) {
                 this.videoDoms[curPos + 1].play();
             }
         });
@@ -90,7 +94,7 @@ export class VideoList extends Component {
         this.videoDoms[curPos].pause();
         this.swiper.prev();
         this.forceUpdate(() => {
-            if(this.state.playing) {
+            if(this.initPlay) {
                 console.log('do play prev')
                 this.videoDoms[curPos - 1].play();
             }
@@ -114,7 +118,7 @@ export class VideoList extends Component {
         if(this.hasNext()) {
             console.log('current play end, will play next one!')
             this.setState({
-                playing: isAndroid() ? false : true,
+                playing: isAndroid() ? false : false,
             })
             this.handleNext();
             return;
@@ -153,6 +157,16 @@ export class VideoList extends Component {
     }
     componentDidUpdate() {
         this.initDoms();
+
+        // 有数据后初始化
+        if(!this.initFinish && this.videoDoms.length > 0) {
+            this.initFinish = true;
+
+            this.handlePlay();
+            document.addEventListener("WeixinJSBridgeReady", () => { 
+                this.handlePlay();
+            }, false)
+        }
 
         if(this.props.replayFlag) {
             this.props.clearReplayFlag();
@@ -215,6 +229,7 @@ export class VideoList extends Component {
                                     src={item.videoUrl}
                                     contentType={props.contentType}
                                     onEnded={this.handleEnded}
+                                    onPlaying={this.handlePlaying}
                                 />
                             </div>
                         ))}

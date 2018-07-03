@@ -11,40 +11,48 @@ import { connect } from 'react-redux';
 import * as action from 'app/actions';
 import _get from 'lodash/get';
 import { CONTENT_TYPE } from 'app/constants';
+import { isAndroid } from 'app/helper';
 
 export class Player extends Component {
 
     render(){
         const props = this.props;
+        let hideInfo = false;
+        if(isAndroid() && props.contentType === CONTENT_TYPE.VIDEO){
+            hideInfo = true;
+        }
 
         return (
             <div className={styles.wrap}>
                 <VideoList />
+                {!hideInfo &&
+                    <React.Fragment>
+                        <div className={styles.other}>
+                            <div className={styles.maskWrap}>
+                                <Info
+                                    tagName={props.hashtagName}
+                                    content={props.content}
+                                    nickName={_get(props, 'userInfo.nickname')}
+                                />
+                                <GoodsList list={props.goodsList}/>
+                            </div>
 
-                <div className={styles.other}>
-                    <div className={styles.maskWrap}>
-                        <Info
-                            tagName={props.hashtagName}
-                            content={props.content}
-                            nickName={_get(props, 'userInfo.nickname')}
+                            <FooterBar
+                                openApp={props.openApp}
+                                userName={_get(props, 'shareUser.userName')}
+                                headImgUrl={_get(props, 'shareUser.headImgUrl')}
+                            />
+                        </div>
+
+                        <ActionSide
+                            headImg={_get(props, 'userInfo.headImg')}
+                            likeCount={props.praiseCount}
+                            commentCount={props.commentCount}
+                            openApp={props.openApp}
+                            isMiddle={_get(props, 'videoList.length') === 1}
                         />
-                        <GoodsList list={props.goodsList}/>
-                    </div>
-
-                    <FooterBar
-                        openApp={props.openApp}
-                        userName={_get(props, 'shareUser.userName')}
-                        headImgUrl={_get(props, 'shareUser.headImgUrl')}
-                    />
-                </div>
-
-                <ActionSide
-                    headImg={_get(props, 'userInfo.headImg')}
-                    likeCount={props.praiseCount}
-                    commentCount={props.commentCount}
-                    openApp={props.openApp}
-                    isMiddle={_get(props, 'videoList.length') === 1}
-                />
+                    </React.Fragment>
+                }
             </div>
         )
     }
